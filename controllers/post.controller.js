@@ -34,7 +34,7 @@ const addPost = async (req, res) => {
             content: content,
             banner: imageUrl,
             createdBy: user._id,
-            createdAt: new Date().toLocaleString(),
+            createdAt: new Date().toISOString(),
         }
 
         const post = new PostModel(postData);

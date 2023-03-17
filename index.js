@@ -19,13 +19,15 @@ app.use(cors({
     origin: ['http://localhost:5173', 'http://localhost:8000', 'https://blogmate.onrender.com']
 }));
 
-// Serve static assets from the build directory
-app.use(express.static(path.join(__dirname, 'build')));
-
 // Set up catch-all route
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+
+
+// Serve static assets from the build directory
+app.use(express.static(path.join(__dirname, 'build')));
+
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));

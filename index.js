@@ -21,7 +21,8 @@ app.use(cors({
 
 // Set up catch-all route
 app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+
 });
 
 

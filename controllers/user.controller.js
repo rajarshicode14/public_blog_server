@@ -1,12 +1,16 @@
 const UserModel = require('../models/User.js');
 
-const moment = require('moment');
+// const moment = require('moment');
+const moment = require('moment-timezone');
 
 
 //Logs in new user
 const loginUser = async (req, res) => {
     try {
         const { uid, displayName, photoURL } = req.body;
+
+        const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const createdAt = moment().tz(userTimeZone).format('D/M/YYYY, h:mm:ss a');
 
         const userData = {
             uid: uid,
@@ -16,7 +20,7 @@ const loginUser = async (req, res) => {
             following: [],
             followers: [],
             bookmarks: [],
-            joinedOn:  moment().format('D/M/YYYY, h:mm:ss a')
+            joinedOn:  createdAt
         }
 
         const isUser = await UserModel.findOne({ uid: uid })

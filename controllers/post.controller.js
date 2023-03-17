@@ -2,7 +2,8 @@ const UserModel = require('../models/User.js');
 const PostModel = require('../models/Post.js');
 
 const imagekit = require('../configurations/imagekit.config.js');
-const moment = require('moment');
+// const moment = require('moment');
+const moment = require('moment-timezone');
 
 
 //Creates a new post
@@ -30,12 +31,15 @@ const addPost = async (req, res) => {
             ],
         });
 
+        const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const createdAt = moment().tz(userTimeZone).format('D/M/YYYY, h:mm:ss a');
+
         const postData = {
             title: title,
             content: content,
             banner: imageUrl,
             createdBy: user._id,
-            createdAt:  moment().format('D/M/YYYY, h:mm:ss a')
+            createdAt:  createdAt
         }
 
         const post = new PostModel(postData);

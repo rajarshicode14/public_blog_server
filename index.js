@@ -18,18 +18,6 @@ const app = express();
 app.use(cors({
     origin: ['http://localhost:5173', 'http://localhost:8000', 'https://blogmate.onrender.com']
 }));
-
-// Set up catch-all route
-app.get('/*', function (req, res) {
-    console.log(path.join(__dirname, '..', 'build', 'index.html'))
-    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
-});
-
-// Serve static assets from the build directory
-app.use(express.static(path.join(__dirname, '..', 'build')));
-
-
-
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

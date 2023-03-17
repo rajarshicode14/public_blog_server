@@ -2,6 +2,7 @@ const UserModel = require('../models/User.js');
 const PostModel = require('../models/Post.js');
 
 const imagekit = require('../configurations/imagekit.config.js');
+const moment = require('moment');
 
 
 //Creates a new post

@@ -1,5 +1,7 @@
 const UserModel = require('../models/User.js');
 
+const moment = require('moment');
+
 
 //Logs in new user
 const loginUser = async (req, res) => {

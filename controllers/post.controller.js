@@ -8,7 +8,7 @@ const moment = require('moment');
 //Creates a new post
 const addPost = async (req, res) => {
     const file = req.file.buffer;
-    const { title, content, createdBy } = req.body;
+    const { title, content, createdBy, createdAt } = req.body;
     const user = await UserModel.findOne({ uid: createdBy });
 
     try {
@@ -35,7 +35,7 @@ const addPost = async (req, res) => {
             content: content,
             banner: imageUrl,
             createdBy: user._id,
-            createdAt:  moment().format('D/M/YYYY, h:mm:ss a')
+            createdAt: createdAt
         }
 
         const post = new PostModel(postData);

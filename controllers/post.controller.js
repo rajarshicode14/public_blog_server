@@ -34,7 +34,7 @@ const addPost = async (req, res) => {
             content: content,
             banner: imageUrl,
             createdBy: user._id,
-            createdAt: new Date().toISOString(),
+            createdAt:  moment().format('D/M/YYYY, h:mm:ss a')
         }
 
         const post = new PostModel(postData);

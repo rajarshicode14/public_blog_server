@@ -14,7 +14,7 @@ const loginUser = async (req, res) => {
             following: [],
             followers: [],
             bookmarks: [],
-            joinedOn: new Date().toLocaleString(),
+            joinedOn:  moment().format('D/M/YYYY, h:mm:ss a')
         }
 
         const isUser = await UserModel.findOne({ uid: uid })

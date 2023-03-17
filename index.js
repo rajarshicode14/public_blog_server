@@ -3,6 +3,7 @@ const PORT = process.env.PORT || 8000;
 require('./configurations/db.config.js');
 
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const multer = require('multer');
